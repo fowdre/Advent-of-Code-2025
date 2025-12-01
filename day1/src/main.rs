@@ -21,7 +21,7 @@ fn main() {
                     }
                 }
             } else if args[1] == "2" {
-                match part1::solution(&input) {
+                match part2::solution(&input) {
                     Ok(solution) => {
                         println!("\nPart 2 solution: {}", solution);
                     }
