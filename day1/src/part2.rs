@@ -9,34 +9,45 @@ pub fn solution(input: &[String]) -> Result<i128, &str> {
             // negative
             let mut local_line = line.clone();
             local_line.remove(0);
-            let parsed = local_line.parse::<i128>().unwrap();
-            current_dial_pos -= parsed;
+            let mut parsed = local_line.parse::<i128>().unwrap().abs();
 
-            loop {
-                dbg!(current_dial_pos);
-                if (0..=99).contains(&current_dial_pos) {
-                    break;
-                } else {
-                    current_dial_pos += 100;
+            dbg!(current_dial_pos);
+
+            while parsed > 0 {
+                parsed -= 1;
+                current_dial_pos -= 1;
+
+                if current_dial_pos == 0 {
                     result += 1;
                 }
+
+                // wrap
+                if current_dial_pos == -1 {
+                    current_dial_pos = 99;
+                }
             }
+
+            dbg!(current_dial_pos);
         } else {
             // positive
             let mut local_line = line.clone();
             local_line.remove(0);
-            let parsed = local_line.parse::<i128>().unwrap();
-            current_dial_pos += parsed;
+            let mut parsed = local_line.parse::<i128>().unwrap().abs();
 
-            loop {
-                dbg!(current_dial_pos);
-                if (0..=99).contains(&current_dial_pos) {
-                    break;
-                } else {
-                    current_dial_pos -= 100;
+            dbg!(current_dial_pos);
+
+            while parsed > 0 {
+                parsed -= 1;
+                current_dial_pos += 1;
+
+                // wrap
+                if current_dial_pos == 100 {
+                    current_dial_pos = 0;
                     result += 1;
                 }
             }
+
+            dbg!(current_dial_pos);
         }
     }
 
