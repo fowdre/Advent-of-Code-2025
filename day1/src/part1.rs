@@ -3,9 +3,6 @@ pub fn solution(input: &[String]) -> Result<u128, &str> {
     let mut current_dial_pos: i128 = 50;
 
     for line in input {
-        println!("\n{}", line);
-        // let line = line.to_string();
-
         if line.chars().nth(0).unwrap() == 'L' {
             // negative
             let mut local_line = line.clone();
@@ -14,8 +11,6 @@ pub fn solution(input: &[String]) -> Result<u128, &str> {
 
             current_dial_pos -= parsed;
             current_dial_pos = current_dial_pos.rem_euclid(100);
-
-            dbg!(current_dial_pos, parsed);
 
             if current_dial_pos == 0 {
                 result += 1;
@@ -28,8 +23,6 @@ pub fn solution(input: &[String]) -> Result<u128, &str> {
 
             current_dial_pos += parsed;
             current_dial_pos = current_dial_pos.rem_euclid(100);
-
-            dbg!(current_dial_pos, parsed);
 
             if current_dial_pos == 0 {
                 result += 1;
